@@ -1,35 +1,69 @@
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, FlatList, ScrollView } from "react-native";
 import { Link } from 'expo-router';
-import { CustomeCard } from '@/components'; // Pastikan jalur impor sudah benar
+import { CustomeCard } from '@/components'
 
 export default function Index() {
-  return (
-    <View>
-      <View style={styles.container}>
-        <Image 
-          style={styles.tinyLogo} 
-          source={{
-            uri : 'https://reactnative.dev/img/tiny_logo.png',
-          }}
-        />
-        <Text style={styles.textName}>
-          Tirto Belanga
-        </Text>
-        <Text style={[styles.subText, styles.textWhite]}>
-          tirtobelanga23@gmail.com
-        </Text>
-        <Link href="/experience" style={[styles.subText, styles.textWhiteLink]}>
-          Experience
-        </Link>
-      </View>
+  const data = [
+    {
+      id:'1', 
+      label:'Personal Details', 
+      path:'/personal',
+      description: 'Your personal information' // Tambahkan description
+    },
+    {
+      id:'2', 
+      label:'Experience', 
+      path:'/experience',
+      description: 'Your work experience' // Tambahkan description
+    },
+    {
+      id:'3', 
+      label:'Education', 
+      path:'/education',
+      description: 'Your educational background' // Tambahkan description
+    },
+    {
+      id:'4', 
+      label:'Certificate', 
+      path:'/certificate',
+      description: 'Your certificates' // Tambahkan description
+    },
+  ];
 
-      {/* Bagian untuk menampilkan kartu */}
-      <View style={styles.border}>
-        <CustomeCard nama="Tirto"/>
-        <CustomeCard nama="Belanga" />
-        <CustomeCard nama="Iya"/>
+  return (
+    <ScrollView>
+      <View>
+        <View style={styles.container}>
+          <Image 
+            style={styles.tinyLogo} 
+            source={{
+              uri : 'https://reactnative.dev/img/tiny_logo.png',
+            }}
+          />
+          <Text style={styles.textName}>
+            Tirto Belanga
+          </Text>
+          <Text style={[styles.subText, styles.textWhite]}>
+            tirtobelanga23@gmail.com
+          </Text>
+        </View>
+
+        {/* Bagian untuk menampilkan kartu */}
+        <View style={styles.border}>
+          <FlatList 
+            data={data}
+            renderItem={({item}) => 
+              <CustomeCard 
+                nama={item.label} 
+                description={item.description} // Pastikan description ada
+                path={item.path}
+              /> 
+            } 
+            keyExtractor={item => item.id}
+          />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -63,6 +97,6 @@ const styles = StyleSheet.create({
   border: {
     marginTop: -25,
     paddingLeft: 20,
-    paddingRight:25,
-}
+    paddingRight: 25,
+  }
 });
