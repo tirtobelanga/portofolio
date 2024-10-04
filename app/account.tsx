@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Image, FlatList, ScrollView } from "react-native";
-import { CustomeCard } from '@/components'; // Asumsi bahwa komponen ini tersedia
+import { CustomeCard } from '@/components'; 
 
 export default function Index() {
   const data = [
@@ -44,8 +44,8 @@ export default function Index() {
             style={styles.tinyLogo} 
             source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }} 
           />
-          <Text style={styles.textName}>Muhammad Dzikri</Text>
-          <Text style={[styles.subText, styles.textWhite]}>dzikryakbar8000@gmail.com</Text>
+          <Text style={styles.textName}>Tirto Belanga</Text>
+          <Text style={[styles.subText, styles.textWhite]}>tirtobelanga23@gmail.com</Text>
         </View>
 
         {/* Bagian daftar kartu */}
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   tinyLogo: {
     height: 100,
     width: 100,
-    borderRadius: 50, // Membuat gambar menjadi bulat
+    borderRadius: 50, 
     marginBottom: 10,
   },
   contentContainer: {
